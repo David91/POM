@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import pages.ProductsPage;
 
 public class SearchProductsTest {
 
@@ -18,7 +19,11 @@ public class SearchProductsTest {
 
     @Test
     public void verifyProductsDisplayFunctionalityAfterRandomSelection() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(driver).open();
+        homePage.waitForPageLoad();
         homePage.searchRandomProd();
+        ProductsPage productsPage = new ProductsPage(driver);
+        productsPage.waitForPageLoad();
+        // here comes the other steps and assertions at the end
     }
 }
