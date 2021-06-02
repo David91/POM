@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.ProductsPage;
+import pages.JobsPage;
 
 public class SearchProductsTest {
 
@@ -14,16 +14,14 @@ public class SearchProductsTest {
     @BeforeClass
     public void driverSetup() {
         driver = new ChromeDriver();
-        driver.get("https://6pm.com");
     }
 
     @Test
     public void verifyProductsDisplayFunctionalityAfterRandomSelection() {
-        HomePage homePage = new HomePage(driver).open();
-        homePage.waitForPageLoad();
-        homePage.searchRandomProd();
-        ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.waitForPageLoad();
+        JobsPage jobsPage = new JobsPage(driver).open();
+        jobsPage.waitForPageLoad();
+        //some code here
+        jobsPage.clickOnNavBarByText("nav text");
         // here comes the other steps and assertions at the end
     }
 }

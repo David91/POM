@@ -5,14 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProductsPage {
-    private WebDriver driver;
+public class JobsPage extends BasePage {
     private WebDriverWait wait;
     private By productsLoc = By.cssSelector("#searchPage article");
+    private String url = "/en/jobs";
 
-    public ProductsPage(WebDriver driver) {
-        this.driver = driver;
+    public JobsPage(WebDriver driver) {
+        super(driver);
         wait = new WebDriverWait(driver,20);
+    }
+
+    public JobsPage open() {
+        driver.get(BASE_URL + url);
+        return this;
     }
 
     public int getProductsCount() {
@@ -20,6 +25,7 @@ public class ProductsPage {
     }
 
     public void waitForPageLoad() {
+        wait.until(ExpectedConditions.numberOfElementsToBe(logoLoc,20));
         wait.until(ExpectedConditions.numberOfElementsToBe(productsLoc,20));
     }
 }

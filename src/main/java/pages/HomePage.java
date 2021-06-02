@@ -7,21 +7,23 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
-    private WebDriver driver;
+public class HomePage extends BasePage {
     private WebDriverWait wait;
     private By searchLoc = By.id("searchAll");
     private By productsLoc = By.cssSelector("[data-eventlabel=melodyPromoGroup]");
+    private String url = "/";
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        wait = new WebDriverWait(driver,20);
     }
+
     public void  checkPrice() {
         checkbox.click();
     }
 
     public HomePage open() {
-        driver.get("https://someUrl");
+        driver.get(BASE_URL + url);
         return this;
     }
 
